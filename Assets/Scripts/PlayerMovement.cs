@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject panel;
     public GameObject wPanel;
+    public GameObject pausePanel;
 
     public AudioSource jumpSFX;
     public AudioSource deathSFX;
@@ -88,6 +89,20 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 0;
             wPanel.SetActive(true);
         }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Ground" && rigidBody.velocity.y > 0)
+        {
+            jumpSFX.Play();
+        }
+    }
+
+    public void Play()
+    {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void Restart()
