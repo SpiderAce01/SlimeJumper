@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
     public GameObject panel;
     public GameObject wPanel;
 
+    public AudioSource jumpSFX;
+    public AudioSource deathSFX;
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -43,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             if(jumpTime > 0)
             {
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
-                jumpTime -= Time.deltaTime;
+                jumpTime -= Time.deltaTime;                
             }
             else
             {
@@ -70,6 +73,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Time.timeScale = 0;
             panel.SetActive(true);
+            deathSFX.Play();
+
         }
 
         if(collision.transform.tag == "Target")
@@ -80,14 +85,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    print("exit");
-    //    if (collision.transform.tag == "Ground")
-    //    {
-    //        isJumping = true;
-    //    }
-    //}
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Ground" && rigidBody.velocity.y > 0)
+        {
+            jumpSFX.Play();
+        }
+    }
 
     public void Restart()
     {
