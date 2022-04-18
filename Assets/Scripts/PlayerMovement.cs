@@ -106,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Main Menu");
     }
 }
