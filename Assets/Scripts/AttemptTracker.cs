@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AttemptTracker : MonoBehaviour
 {
@@ -24,6 +25,13 @@ public class AttemptTracker : MonoBehaviour
 
     void Update()
     {
-        GetComponent<TMPro.TMP_Text>().text = "Attempt " + attempts;
+        if(SceneManager.GetActiveScene().name == "Main Menu")
+        {
+            GetComponent<TMPro.TMP_Text>().text = "";
+        }
+        else
+        {
+            GetComponent<TMPro.TMP_Text>().text = "Attempt " + attempts;
+        }
     }
 }
