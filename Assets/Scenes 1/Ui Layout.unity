@@ -1340,7 +1340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &174309342
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1894,8 +1894,8 @@ AudioSource:
   m_GameObject: {fileID: 242649297}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 281954e697fb875499d8ddc6dc9264c5, type: 3}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: ad42f00667e5ade4b971b45f92becf95, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 2ab58db4d4ec0334d804cb3319daf7ee, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4557,6 +4557,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &552893561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 552893563}
+  - component: {fileID: 552893562}
+  m_Layer: 0
+  m_Name: PauseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &552893562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552893561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31fe4da16dc80b445b3f68593cc638d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pausePanel: {fileID: 174309341}
+  mixer: {fileID: 24100000, guid: ad42f00667e5ade4b971b45f92becf95, type: 2}
+--- !u!4 &552893563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552893561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.910244, y: 2.2877707, z: -92.21775}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &556268564
 GameObject:
   m_ObjectHideFlags: 0
@@ -4976,7 +5021,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6826,8 +6871,8 @@ RectTransform:
   m_Father: {fileID: 166499545}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 1.6000061, y: 0}
   m_SizeDelta: {x: 20, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11934,7 +11979,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1835840068}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: Restart
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13930,14 +13975,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 7
   jumpSpeed: 10
+  groundCheck:
+    serializedVersion: 2
+    m_Bits: 0
+  isGrounded: 0
+  feetPosition: {fileID: 0}
+  checkRadius: 0
   isJumping: 0
   jumpStartTime: 0
   jumpTime: 0
   target: {fileID: 918337761}
   manage: {fileID: 519420030}
-  pP: {fileID: 0}
   panel: {fileID: 556268564}
   wPanel: {fileID: 45711164}
+  pausePanel: {fileID: 174309341}
   jumpSFX: {fileID: 0}
   deathSFX: {fileID: 0}
 --- !u!50 &1835840069
@@ -14366,6 +14417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1902964974}
   - component: {fileID: 1902964975}
+  - component: {fileID: 1902964976}
   m_Layer: 5
   m_Name: Volume
   m_TagString: Untagged
@@ -14445,7 +14497,33 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1902964976}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: SetLevel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1902964976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902964973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31fe4da16dc80b445b3f68593cc638d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pausePanel: {fileID: 174309341}
+  mixer: {fileID: 24100000, guid: ad42f00667e5ade4b971b45f92becf95, type: 2}
 --- !u!1 &1913417572
 GameObject:
   m_ObjectHideFlags: 0
