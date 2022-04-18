@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rigidBody;
     public MovementManager manage;
+    public PauseMenu pP;
 
     public GameObject panel;
     public GameObject wPanel;
@@ -91,6 +92,11 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpSFX.Play();
         }
+    }
+
+    public void Play()
+    {
+        pP.pausePanel.SetActive(false);
     }
 
     public void Restart()
