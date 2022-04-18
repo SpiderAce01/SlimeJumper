@@ -36,6 +36,12 @@ public class MainMenuManager : MonoBehaviour
         mPanel.SetActive(false);
         sPanel.SetActive(true);
     }
+    public void ShopBack()
+    {
+        videoPlayer.SetActive(true);
+        sPanel.SetActive(false);
+        mPanel.SetActive(true);
+    }
 
     public void Quit()
     {
