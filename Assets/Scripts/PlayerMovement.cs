@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isJumping;
 
+    public float jumpStartTime;
+    public float jumpTime;
+
     public GameObject target;
 
     private Rigidbody2D rigidBody;
@@ -30,6 +33,28 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isJumping == false)
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
+            jumpTime = jumpStartTime; //Slime Jump
+            isJumping = false;
+        }
+
+        //Slime Jump
+        if (Input.GetKey(KeyCode.Space) && isJumping == false)
+        {
+            if(jumpTime > 0)
+            {
+                rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
+                jumpTime -= Time.deltaTime;
+            }
+            else
+            {
+                isJumping = true;
+            }
+                        
+        }
+
+        if(Input.GetKeyUp(KeyCode.Space))
+        {
+            isJumping = true;
         }
     }
 
@@ -55,19 +80,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        print("exit");
-        if (collision.transform.tag == "Ground")
-        {
-            isJumping = true;
-        }
-    }
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    print("exit");
+    //    if (collision.transform.tag == "Ground")
+    //    {
+    //        isJumping = true;
+    //    }
+    //}
 
     public void Restart()
     {
         AttemptTracker.instance.attempts++;
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
         Time.timeScale = 1;
     }
 
