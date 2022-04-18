@@ -8,7 +8,13 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public float jumpSpeed;
 
-    public bool isJumping;
+    public LayerMask groundCheck;
+    public bool isGrounded;
+    public Transform feetPosition;
+    public float checkRadius;
+
+
+    public bool isJumping = false;
 
     public float jumpStartTime;
     public float jumpTime;
@@ -32,31 +38,35 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        isGrounded = Physics2D.OverlapCircle(feetPosition.position, checkRadius, groundCheck);
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.Space) && isJumping == false)
+        //Normal Jump
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
-            jumpTime = jumpStartTime; //Slime Jump
             isJumping = false;
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
+            jumpTime = jumpStartTime;
+            jumpSFX.Play();
         }
 
         //Slime Jump
         if (Input.GetKey(KeyCode.Space) && isJumping == false)
         {
-            if(jumpTime > 0)
+            if (jumpTime > 0)
             {
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
-                jumpTime -= Time.deltaTime;                
+                jumpTime -= Time.deltaTime;
             }
             else
             {
                 isJumping = true;
             }
-                        
+
         }
 
-        if(Input.GetKeyUp(KeyCode.Space))
+        //Release SPACE to reset bool
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             isJumping = true;
         }
@@ -64,11 +74,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("enter");
-        if (collision.transform.tag == "Ground")
-        {
-            isJumping = false;
-        }
 
         if(collision.transform.tag == "Obstacle")
         {
