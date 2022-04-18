@@ -72,7 +72,7 @@ AudioSource:
   m_GameObject: {fileID: 3637424826262594202}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: ad42f00667e5ade4b971b45f92becf95, type: 2}
   m_audioClip: {fileID: 8300000, guid: eee06bdb15b3ffd4d8f0a9797b7d86f9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
@@ -199,7 +199,7 @@ AudioSource:
   m_GameObject: {fileID: 3637424826471551351}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: ad42f00667e5ade4b971b45f92becf95, type: 2}
   m_audioClip: {fileID: 8300000, guid: 5a129c1257b11e14fa4ee08c8d75e2fa, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
@@ -477,5 +477,6 @@ MonoBehaviour:
   manage: {fileID: 0}
   panel: {fileID: 0}
   wPanel: {fileID: 0}
+  pausePanel: {fileID: 0}
   jumpSFX: {fileID: 3637424826262594180}
   deathSFX: {fileID: 3637424826471551345}
