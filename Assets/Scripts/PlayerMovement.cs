@@ -17,10 +17,10 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rigidBody;
     public MovementManager manage;
-    public PauseMenu pP;
 
     public GameObject panel;
     public GameObject wPanel;
+    public GameObject pausePanel;
 
     public AudioSource jumpSFX;
     public AudioSource deathSFX;
@@ -96,7 +96,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Play()
     {
-        pP.pausePanel.SetActive(false);
+        pausePanel.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void Restart()
