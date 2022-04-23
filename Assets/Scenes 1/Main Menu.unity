@@ -5423,11 +5423,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2399148669683370255, guid: a780e9875992b7b418640dad881b9350, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5411335843615867612, guid: a780e9875992b7b418640dad881b9350, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5519181999093155956, guid: a780e9875992b7b418640dad881b9350, type: 3}
       propertyPath: shopUI
