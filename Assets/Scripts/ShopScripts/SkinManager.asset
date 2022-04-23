@@ -16,12 +16,8 @@ MonoBehaviour:
   - cost: 0
     sprite: {fileID: 21300000, guid: c5036038960cfa547b5f4ef5e8731787, type: 3}
   - cost: 5
-    sprite: {fileID: 21300000, guid: 295bcb185c74d494ab0462b7b7402f60, type: 3}
+    sprite: {fileID: 21300000, guid: d7d62a45df84fc7458cb980a7f544ccc, type: 3}
   - cost: 10
-    sprite: {fileID: 21300000, guid: 468940470262cb842a4da2c15098b6a6, type: 3}
+    sprite: {fileID: 21300000, guid: e1288dd241ee87048b8d31971f1ac591, type: 3}
   - cost: 15
-    sprite: {fileID: 21300000, guid: 81f78332483665e46bdcd7fc400e750d, type: 3}
-  - cost: 20
-    sprite: {fileID: 21300000, guid: 531e18c8bcd894f48b18249defc8dfa4, type: 3}
-  - cost: 25
-    sprite: {fileID: 21300000, guid: 7d48f94d40492e942a6fa84194512253, type: 3}
+    sprite: {fileID: 21300000, guid: ca354671ea0a9e747970528ce4c338e5, type: 3}

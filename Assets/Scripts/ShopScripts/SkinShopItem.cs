@@ -12,6 +12,7 @@ public class SkinShopItem : MonoBehaviour
     [SerializeField] private Button buyButton;
     [SerializeField] private TMP_Text costText;
     [SerializeField] private TMP_Text purchaseText;
+    [SerializeField] private TMP_Text insufficientText;
     private Skin skin;
 
     // Start is called before the first frame update
@@ -56,8 +57,21 @@ public class SkinShopItem : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not Enough Coins :(");
+            //Debug.Log("Not Enough Coins :(");
+            StartCoroutine(InsufficientCoins());
         }
+    }
+
+    IEnumerator InsufficientCoins()
+    {
+        insufficientText.gameObject.SetActive(true);
+        buyButton.gameObject.SetActive(false);
+
+        yield return new WaitForSecondsRealtime(2f);
+
+        insufficientText.gameObject.SetActive(false);
+        buyButton.gameObject.SetActive(true);
+
     }
 
 }
