@@ -480,3 +480,5 @@ MonoBehaviour:
   pausePanel: {fileID: 0}
   jumpSFX: {fileID: 3637424826262594180}
   deathSFX: {fileID: 3637424826471551345}
+  skinManager: {fileID: 11400000, guid: f8c24869cccb61142bd9e117ddef9488, type: 2}
+  coinsText: {fileID: 0}
