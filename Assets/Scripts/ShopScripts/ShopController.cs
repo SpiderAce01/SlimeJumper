@@ -18,6 +18,6 @@ public class ShopController : MonoBehaviour
         //selectedSkin.sprite = skinManager.GetSelectedSkin().sprite;
     }
 
-    public void LoadGame() => SceneManager.LoadScene("GameScene");
+    //public void LoadGame() => SceneManager.LoadScene("GameScene");
 
 }

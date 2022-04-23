@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 1758010984498335039}
   - component: {fileID: 4232860136027140691}
   m_Layer: 5
-  m_Name: Selected
+  m_Name: GetMore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Selected
+  m_text: Get more Coins
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e60109d44d158f840981ba900c73d904, type: 2}
   m_sharedMaterial: {fileID: -5031989406262193297, guid: e60109d44d158f840981ba900c73d904, type: 2}
@@ -638,7 +638,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
