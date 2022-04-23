@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SkinShopItem : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class SkinShopItem : MonoBehaviour
     [SerializeField] private SkinManager skinManager;
     [SerializeField] private int skinIndex;
     [SerializeField] private Button buyButton;
-    [SerializeField] private Text costText;
+    [SerializeField] private TMP_Text costText;
+    [SerializeField] private TMP_Text purchaseText;
     private Skin skin;
 
     // Start is called before the first frame update
@@ -22,11 +24,12 @@ public class SkinShopItem : MonoBehaviour
         if(skinManager.IsUnlocked(skinIndex))
         {
             buyButton.gameObject.SetActive(false);
+            purchaseText.gameObject.SetActive(true);
         }
         else
         {
             buyButton.gameObject.SetActive(true);
-            costText.text = skin.cost.ToString();
+            costText.text = skin.cost.ToString() + " Coins"; 
         }    
 
     }
@@ -41,13 +44,14 @@ public class SkinShopItem : MonoBehaviour
 
     public void OnBuyButtonPressed()
     {
-        int coins = PlayerPrefs.GetInt("Coins", 0);
+        int coins = PlayerPrefs.GetInt("Coins");
 
         if (coins >= skin.cost && !skinManager.IsUnlocked(skinIndex))
         {
             PlayerPrefs.SetInt("Coins", coins - skin.cost);
             skinManager.Unlock(skinIndex);
             buyButton.gameObject.SetActive(false);
+            purchaseText.gameObject.SetActive(true);
             skinManager.SelectSkin(skinIndex);
         }
         else

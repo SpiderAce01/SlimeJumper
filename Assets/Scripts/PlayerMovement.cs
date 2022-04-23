@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -31,9 +32,15 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource jumpSFX;
     public AudioSource deathSFX;
 
+    [SerializeField] private SkinManager skinManager;
+    [SerializeField] private TMP_Text coinsText;
+    private int count;
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        GetComponent<SpriteRenderer>().sprite = skinManager.GetSelectedSkin().sprite;
+        count = PlayerPrefs.GetInt("Coins");
     }
 
     void Update()
@@ -70,6 +77,8 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumping = true;
         }
+
+        coinsText.text = "Coins: " + PlayerPrefs.GetInt("Coins");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -88,6 +97,15 @@ public class PlayerMovement : MonoBehaviour
             AttemptTracker.instance.attempts = 0;
             Time.timeScale = 0;
             wPanel.SetActive(true);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Coin"))
+        {
+            count += 1;
+            PlayerPrefs.SetInt("Coins", count);
         }
     }
 
