@@ -15,6 +15,10 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene("Level 2");
     }
+    public void LevelThree()
+    {
+        SceneManager.LoadScene("Level 3");
+    }
 
     public void Back()
     {
