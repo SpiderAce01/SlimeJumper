@@ -31,10 +31,12 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioSource jumpSFX;
     public AudioSource deathSFX;
+    public AudioSource coinSFX;
 
     [SerializeField] private SkinManager skinManager;
     [SerializeField] private TMP_Text coinsText;
     private int count;
+    private int coinCount = 0;
 
     void Start()
     {
@@ -87,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
         if(collision.transform.tag == "Obstacle")
         {
             Time.timeScale = 0;
+            PlayerPrefs.SetInt("Coins", count - coinCount);
             panel.SetActive(true);
             deathSFX.Play();
 
@@ -104,6 +107,8 @@ public class PlayerMovement : MonoBehaviour
         if(collision.CompareTag("Coin"))
         {
             count += 1;
+            coinCount += 1;
+            coinSFX.Play();
             PlayerPrefs.SetInt("Coins", count);
         }
     }
