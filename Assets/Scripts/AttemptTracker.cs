@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class AttemptTracker : MonoBehaviour
 {
     public static AttemptTracker instance;
+    public TMPro.TMP_Text attemptClone;
 
     public int attempts;
 
@@ -32,6 +34,7 @@ public class AttemptTracker : MonoBehaviour
         else
         {
             GetComponent<TMPro.TMP_Text>().text = "Attempt " + attempts;
+            attemptClone.text = "Attempt " + attempts;
         }
     }
 }

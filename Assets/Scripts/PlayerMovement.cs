@@ -94,7 +94,6 @@ public class PlayerMovement : MonoBehaviour
 
         if(collision.transform.tag == "Target")
         {
-            AttemptTracker.instance.attempts = 0;
             Time.timeScale = 0;
             wPanel.SetActive(true);
         }
@@ -117,14 +116,21 @@ public class PlayerMovement : MonoBehaviour
 
     public void Restart()
     {
-        AttemptTracker.instance.attempts++;
+        if(wPanel.active == true)
+        {
+            AttemptTracker.instance.attempts = 1;
+        }
+        else
+        {
+            AttemptTracker.instance.attempts++;
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
         Time.timeScale = 1;
     }
 
     public void Quit()
     {
-        AttemptTracker.instance.attempts = 0;
+        AttemptTracker.instance.attempts = 1;
         Time.timeScale = 1;
         SceneManager.LoadScene("Main Menu");
     }
