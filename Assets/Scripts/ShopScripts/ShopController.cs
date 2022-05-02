@@ -7,7 +7,7 @@ using TMPro;
 
 public class ShopController : MonoBehaviour
 {
-    //[SerializeField] private Image selectedSkin;
+    [SerializeField] private Image selectedSkin;
     [SerializeField] private TMP_Text coinsText;
     [SerializeField] private SkinManager skinManager;
 
@@ -15,7 +15,7 @@ public class ShopController : MonoBehaviour
     void Update()
     {
         coinsText.text = "Coins: " + PlayerPrefs.GetInt("Coins");
-        //selectedSkin.sprite = skinManager.GetSelectedSkin().sprite;
+        selectedSkin.sprite = skinManager.GetSelectedSkin().sprite;
     }
 
     //public void LoadGame() => SceneManager.LoadScene("GameScene");
