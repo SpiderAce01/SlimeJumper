@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource jumpSFX;
     public AudioSource deathSFX;
     public AudioSource coinSFX;
+    public AudioSource victorySFX;
 
     [SerializeField] private SkinManager skinManager;
     [SerializeField] private TMP_Text coinsText;
@@ -99,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Time.timeScale = 0;
             wPanel.SetActive(true);
+            victorySFX.Play();
         }
     }
 
